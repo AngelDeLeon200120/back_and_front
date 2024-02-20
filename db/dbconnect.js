@@ -34,4 +34,5 @@ const modeluser=mongoose.model('users',userSchema);
 
 //     fluffy.save()
 
+
 module.exports= modeluser;
