@@ -15,7 +15,7 @@ const { resolve } = require('node:path');
 // const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
 
 env.PORT=4000;
-env.MONGGOD_CONNECT_URI='mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud';
+env.MONGGOD_CONNECT_URI='mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/MongoBD?retryWrites=true&w=majority&appName=Book-Store-MERN ';
 const PORT = process.env.PORT || env.PORT;
 const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
 
