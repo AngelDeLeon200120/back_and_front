@@ -8,7 +8,7 @@ const cors =require('cors');
 const mongoose =require('mongoose');
 const modeluser =require('./db/dbconnect.js');
 const urlFront =require('./config.js');
-
+const port = process.env.PORT || 4000;
 
 
 app.use(cors());
@@ -35,6 +35,6 @@ app.post('/signup',(req,res)=>{
     .catch((err) => res.json(err));
 })
 
-app.listen(3000,()=>{
-    console.log('escuchando....');
+app.listen(port,()=>{
+    console.log(`escuchando...${port}`);
 })
