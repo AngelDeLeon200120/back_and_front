@@ -10,6 +10,7 @@ const modeluser =require('./db/dbconnect.js');
 const urlFront =require('./config.js');
 const port = process.env.PORT || 4000;
 
+const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI || 'mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud'
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +21,7 @@ app.get('/',(req,res)=>{
     .catch((err) => res.json(err));
   
 });
-mongoose.connect('mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud',console.log('conecto a mongoDB'));
+mongoose.connect(MONGGOD_CONNECT_URI,console.log('conecto a mongoDB'));
 
 app.get('/signup',(req,res)=>{
     modeluser.find({})
