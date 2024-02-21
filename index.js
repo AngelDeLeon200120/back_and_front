@@ -8,12 +8,23 @@ const cors =require('cors');
 const mongoose =require('mongoose');
 const modeluser =require('./db/dbconnect.js');
 const urlFront =require('./config.js');
-const port = process.env.PORT || 4000;
+const env =require('node:process');
+const { resolve } = require('node:path');
 
-const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI || 'mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud'
+// const PORT =process.env.PORT
+// const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
+
+env.PORT=4000;
+env.MONGGOD_CONNECT_URI='mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud';
+const PORT = process.env.PORT || env.PORT;
+const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
+
+
 
 app.use(cors());
 app.use(express.json());
+
+mongoose.connect(MONGGOD_CONNECT_URI,console.log('conectoDB'))
 
 app.get('/',(req,res)=>{
     modeluser.find({})
@@ -21,7 +32,7 @@ app.get('/',(req,res)=>{
     .catch((err) => res.json(err));
   
 });
-mongoose.connect(MONGGOD_CONNECT_URI,console.log('conecto a mongoDB'));
+
 
 app.get('/signup',(req,res)=>{
     modeluser.find({})
@@ -36,6 +47,9 @@ app.post('/signup',(req,res)=>{
     .catch((err) => res.json(err));
 })
 
-app.listen(port,()=>{
-    console.log(`escuchando...${port}`);
+app.listen(PORT,()=>{
+    console.log(`escuchando...${PORT}`);
 })
+
+
+
