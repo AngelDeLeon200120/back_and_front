@@ -41,11 +41,17 @@ app.get('/signup',(req,res)=>{
   
 });
 
+app.post('/',(req,res)=>{
+    modeluser.create(req.body)
+    .then((users) => res.json(users))
+    .catch((err) => res.json(err));
+});
+
 app.post('/signup',(req,res)=>{
     modeluser.create(req.body)
     .then((users) => res.json(users))
     .catch((err) => res.json(err));
-})
+});
 
 app.listen(PORT,()=>{
     console.log(`escuchando...${PORT}`);
