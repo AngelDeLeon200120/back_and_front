@@ -15,28 +15,29 @@ const env = require("node:process");
 
 env.PORT = 4000;
 env.MONGGOD_CONNECT_URI =
-  "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/MongoBD?retryWrites=true&w=majority&appName=Book-Store-MERN ";
+  "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
 const PORT = process.env.PORT || env.PORT;
 const MONGGOD_CONNECT_URI =
   process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
 
-app.use(cors());
-app.use(express.json());
+  const conectDB = async () => {
+    try {
+      const conn = await mongoose.connect(
+       MONGGOD_CONNECT_URI,
+        console.log("conectoDB")
+      );
+      console.log(`MongoDB CONECTO: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  };
+// app.use(cors());
+// app.use(express.json());
 
 // mongoose.connect(MONGGOD_CONNECT_URI,console.log('conectoDB'));
 
-const conectDB = async () => {
-  try {
-    const conn = await mongoose.connect(
-      MONGGOD_CONNECT_URI,
-      console.log("conectoDB")
-    );
-    console.log(`MongoDB CONECTO: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-};
+
 app.get("/", (req, res) => {
   modeluser
     .find({})
