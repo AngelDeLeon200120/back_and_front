@@ -20,6 +20,7 @@ const PORT = process.env.PORT || env.PORT;
 const MONGGOD_CONNECT_URI =
   process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
 
+  mongoose.set('strictQuery',false);
   const conectDB = async () => {
     try {
       const conn = await mongoose.connect(
