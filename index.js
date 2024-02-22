@@ -34,7 +34,7 @@ const MONGGOD_CONNECT_URI =
     }
   };
 // app.use(cors());
-// app.use(express.json());
+app.use(express.json());
 
 // mongoose.connect(MONGGOD_CONNECT_URI,console.log('conectoDB'));
 
