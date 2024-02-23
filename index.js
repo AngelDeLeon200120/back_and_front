@@ -9,6 +9,9 @@ const mongoose = require("mongoose");
 const modeluser = require("./db/dbconnect.js");
 const urlFront = require("./config.js");
 const env = require("node:process");
+require('dotenv').config({path:'.env'});
+
+console.log(process.env.MONGGOD_CONNECT_URI);
 
 // const PORT =process.env.PORT
 // const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
@@ -16,9 +19,13 @@ const env = require("node:process");
 env.PORT = 4000;
 env.MONGGOD_CONNECT_URI =
   "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
+  const host =process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || env.PORT;
 const MONGGOD_CONNECT_URI =
   process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
+
+  app.use(cors());
+app.use(express.json());
 
   mongoose.set('strictQuery',false);
   const conectDB = async () => {
@@ -33,8 +40,7 @@ const MONGGOD_CONNECT_URI =
       process.exit(1);
     }
   };
-// app.use(cors());
-app.use(express.json());
+
 
 // mongoose.connect(MONGGOD_CONNECT_URI,console.log('conectoDB'));
 
@@ -69,7 +75,7 @@ app.post("/signup", (req, res) => {
 
 
 conectDB().then(() => {
-  app.listen(PORT, () => {
+  app.listen(PORT,host, () => {
     console.log(`escuchando...${PORT}`);
   });
 });
