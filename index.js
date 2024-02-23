@@ -1,3 +1,4 @@
+
 const express = require("express");
 // import express from 'express';
 const app = express();
@@ -8,7 +9,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const modeluser = require("./db/dbconnect.js");
 const urlFront = require("./config.js");
-const env = require("node:process");
+// const env = require("node:process");
 require('dotenv').config({path:'.env'});
 
 console.log(process.env.MONGGOD_CONNECT_URI);
@@ -16,17 +17,18 @@ console.log(process.env.MONGGOD_CONNECT_URI);
 // const PORT =process.env.PORT
 // const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
 
-env.PORT = 4000;
-env.MONGGOD_CONNECT_URI =
-  "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
-  const host =process.env.HOST || '0.0.0.0';
-const PORT = process.env.PORT || env.PORT;
+
+// env.PORT = 4000;
+// env.MONGGOD_CONNECT_URI =
+//   "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
+//   const host =process.env.HOST || '0.0.0.0';
+const PORT = process.env.port || 3000;
 const MONGGOD_CONNECT_URI =
-  process.env.MONGGOD_CONNECT_URI || env.MONGGOD_CONNECT_URI;
+"mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud"; 
 
   app.use(cors());
 app.use(express.json());
-
+console.log(PORT);
   mongoose.set('strictQuery',false);
   const conectDB = async () => {
     try {
