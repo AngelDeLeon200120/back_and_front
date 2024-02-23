@@ -75,7 +75,7 @@ app.post("/signup", (req, res) => {
 
 
 conectDB().then(() => {
-  app.listen(PORT,host, () => {
+  app.listen(PORT, () => {
     console.log(`escuchando...${PORT}`);
   });
 });
