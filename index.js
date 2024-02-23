@@ -12,7 +12,7 @@ const urlFront = require("./config.js");
 // const env = require("node:process");
 require('dotenv').config({path:'.env'});
 
-console.log(process.env.MONGGOD_CONNECT_URI);
+console.log(process.env.monggod_connect_uri);
 
 // const PORT =process.env.PORT
 // const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
@@ -23,8 +23,7 @@ console.log(process.env.MONGGOD_CONNECT_URI);
 //   "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
 //   const host =process.env.HOST || '0.0.0.0';
 const PORT = process.env.port || 3000;
-const MONGGOD_CONNECT_URI =
-"mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud"; 
+const MONGGOD_CONNECT_URI =process.env.monggod_connect_uri||"mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud"; 
 
   app.use(cors());
 app.use(express.json());
