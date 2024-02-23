@@ -8,11 +8,11 @@ const db = require("./db/dbconnect.js");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const modeluser = require("./db/dbconnect.js");
-const urlFront = require("./config.js");
+
 // const env = require("node:process");
 require('dotenv').config({path:'.env'});
 
-console.log(process.env.monggod_connect_uri);
+
 
 // const PORT =process.env.PORT
 // const MONGGOD_CONNECT_URI=process.env.MONGGOD_CONNECT_URI
@@ -22,20 +22,20 @@ console.log(process.env.monggod_connect_uri);
 // env.MONGGOD_CONNECT_URI =
 //   "mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud ";
 //   const host =process.env.HOST || '0.0.0.0';
-const PORT = process.env.port || 3000;
-const MONGGOD_CONNECT_URI =process.env.monggod_connect_uri||"mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud"; 
+const PORT = process.env.PORT || 3000;
+const MONGGOD_CONNECT_URI =process.env.MONGGOD_CONNECT_URI||"mongodb+srv://angeleliandeleon:angel2001@book-store-mern.xwkldkr.mongodb.net/Formcrud"; 
 
   app.use(cors());
 app.use(express.json());
-console.log(PORT);
-  mongoose.set('strictQuery',false);
+
+ 
   const conectDB = async () => {
     try {
       const conn = await mongoose.connect(
        MONGGOD_CONNECT_URI,
         console.log("conectoDB")
       );
-      console.log(`MongoDB CONECTO: ${conn.connection.host}`);
+  
     } catch (error) {
       console.log(error);
       process.exit(1);
@@ -75,8 +75,8 @@ app.post("/signup", (req, res) => {
 });
 
 
-conectDB().then(() => {
+conectDB();
   app.listen(PORT, () => {
     console.log(`escuchando...${PORT}`);
   });
-});
+
